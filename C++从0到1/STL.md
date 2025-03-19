@@ -12,25 +12,31 @@ char *类，不用担心复制越界和取值越界
 
 #### 构造
 
-* `string();`          					//创建一个空的字符串 例如: string str;
-* `string(const char* s);`	              //使用字符串s初始化
-* `string(const string& str);`              //使用一个string对象初始化另一个string对象
-* `string(int n, char c);`                      //使用n个字符c初始化 
+| 函数                         | 功能                 |
+| ---------------------------- | -------------------- |
+| `string();`                  | 创建一个空的字符串   |
+| `string(const char* s);`     | 使用字符串s初始化    |
+| `string(const string& str);` | 使用string对象初始化 |
+| `string(int n, char c);`     | 使用n个字符c初始化   |
 
 #### 赋值
 
-* `string& operator=(const char* s);`             //char*类型字符串 赋值给当前的字符串
-* `string& operator=(const string &s);`         //把字符串s赋给当前的字符串
-* `string& operator=(char c);`                          //字符赋值给当前的字符串
-* `string& assign(const char *s);`                  //把字符串s赋给当前的字符串
-* `string& assign(const char *s, int n);`     //把字符串s的前n个字符赋给当前的字符串
-* `string& assign(const string &s);`              //把字符串s赋给当前字符串
-* `string& assign(int n, char c);`                  //用n个字符c赋给当前字符串
+| 函数                                    | 功能                     |
+| --------------------------------------- | ------------------------ |
+| `string& operator=(const char* s);`     | char*字符串赋值          |
+| `string& operator=(const string &s);`   | string对象赋值           |
+| `string& operator=(char c);`            | 字符赋值                 |
+| `string& assign(const char *s);`        | char*字符串赋值          |
+| `string& assign(const char *s, int n);` | char*字符串前n个字符赋值 |
+| `string& assign(const string &s);`      | string对象赋值           |
+| `string& assign(int n, char c);`        | n个字符c赋值             |
 
 #### 存取
 
-* `char& operator[](int n); `     //通过[]方式取字符
-* `char& at(int n);   `                    //通过at方法获取字符
+| 函数                       | 功能               |
+| -------------------------- | ------------------ |
+| `char& operator[](int n);` | 通过[]方式取字符   |
+| `char& at(int n);`         | 通过at方法获取字符 |
 
 #### 拼接
 
@@ -391,9 +397,9 @@ char *类，不用担心复制越界和取值越界
 
 
 
-## 函数对象(仿函数)
+## 函数对象
 
-重载**函数调用操作符**的类，可调用，有参数，有返回值，有状态，**可作为参数传递**
+重载**函数调用操作符**的类，类似于函数一样使用，有状态，**可作为参数传递**
 
 ```cpp
 class MyAdd
