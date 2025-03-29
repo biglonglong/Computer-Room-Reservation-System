@@ -76,25 +76,23 @@ void Teacher::verifyOrder() {
     int select = 0;
     cout << "please input the order id to verify, else to return: ";
     cin >> select;
-    while(true) {
-        if(select <=0 || select > v.size()) {
-            cout << "back." << endl;
-            return;
+    if(select <=0 || select > v.size()) {
+        cout << "back." << endl;
+        return;
+    }
+    else {
+        int verify = 0;
+        cout << "please input the verify result(1.approve 2.reject): ";
+        cin >> verify;
+        if(verify == 1) {
+            of.orderMap[v[select-1]]["status"] = "2";
+        } else if(verify == 2) {
+            of.orderMap[v[select-1]]["status"] = "-1";
+        } else {
+            cout << "input error, please input again" << endl;
         }
-        else {
-            int verify = 0;
-            cout << "please input the verify result(1.approve 2.reject): ";
-            cin >> verify;
-            if(verify == 1) {
-                of.orderMap[v[select-1]]["status"] = "2";
-            } else if(verify == 2) {
-                of.orderMap[v[select-1]]["status"] = "-1";
-            } else {
-                cout << "input error, please input again" << endl;
-            }
-            of.updateOrderFile();
-            cout << "verify success" << endl;
-            return;
-        }
+        of.updateOrderFile();
+        cout << "verify success" << endl;
+        return;
     }
 }

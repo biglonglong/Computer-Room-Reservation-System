@@ -97,9 +97,10 @@ void Manager::openMenu() {
 }
 
 void Manager::addAccount() {
+    cout << "account added kind:(1. student, 2. teacher): ";
+
     string filename;
     int select = 0;
-    cout << "account added kind:(1. student, 2. teacher): ";
     cin >> select;
     if(select == 1) {
         filename = STUDENT_FILE;
@@ -138,8 +139,9 @@ void Manager::addAccount() {
 }
 
 void Manager::showAccount() {
-    int select = 0;
     cout << "account showed kind:(1. student, 2. teacher): ";
+    
+    int select = 0;
     cin >> select;
     if(select == 1) {
         cout << "student(total of " << this->vStu.size() << "):" << endl;

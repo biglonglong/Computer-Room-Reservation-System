@@ -3,6 +3,7 @@
 #include "Student.h"
 #include "Teacher.h"
 #include "Manager.h"
+#include <limits>
 using namespace std;
 
 void mainopenMenu() {
@@ -22,9 +23,10 @@ void mainopenMenu() {
 
 void managerMenu(Identity* manager) {
     while(true) {
+        system("cls");
         manager->openMenu();
-        Manager *mgr = (Manager*)manager;
 
+        Manager *mgr = (Manager*)manager;
         int select = 0;
         cin >> select;
         if(select == 1) {
@@ -44,19 +46,18 @@ void managerMenu(Identity* manager) {
             delete manager;
             cout << "logout success." << endl;
             system("pause");
-            system("cls");
             return;
         }
         system("pause");
-        system("cls");
     }
 }
 
 void studentMenu(Identity* student) {
     while(true) {
+        system("cls");
         student->openMenu();
-        Student *stu = (Student*)student;
 
+        Student *stu = (Student*)student;
         int select = 0;
         cin >> select;
         if(select == 1) {
@@ -76,19 +77,18 @@ void studentMenu(Identity* student) {
             delete student;
             cout << "logout success." << endl;
             system("pause");
-            system("cls");
             return;
         }
         system("pause");
-        system("cls");
     }
 }
 
 void teacherMenu(Identity* teacher) {
     while(true) {
+        system("cls");
         teacher->openMenu();
-        Teacher *tea = (Teacher*)teacher;
 
+        Teacher *tea = (Teacher*)teacher;
         int select = 0;
         cin >> select;
         if(select == 1) {
@@ -102,11 +102,9 @@ void teacherMenu(Identity* teacher) {
             delete teacher;
             cout << "logout success." << endl;
             system("pause");
-            system("cls");
             return;
         }
         system("pause");
-        system("cls");
     }
 }
 
@@ -120,6 +118,7 @@ void loginIn(string fileName, int type) {
             return;
         }
 
+        // get user name, password, id for login
         int id = 0;
         string name;
         string pwd;
@@ -136,6 +135,7 @@ void loginIn(string fileName, int type) {
         cout << "please input your password: ";
         cin >> pwd;
 
+        // vertify user name, password, id
         Identity* person = NULL;
         if(type == 1) {
             // student vertify
@@ -144,8 +144,6 @@ void loginIn(string fileName, int type) {
             string s_Pwd;
             while(ifs >> s_Id && ifs >> s_Name && ifs >> s_Pwd) {
                 if(s_Id == id && s_Name == name && s_Pwd == pwd) {
-                    system("cls");
-                    cout << "student vertify success." << endl;
                     person = new Student(id, name, pwd);
                     // student menu
                     studentMenu(person);
@@ -161,7 +159,7 @@ void loginIn(string fileName, int type) {
             while(ifs >> t_Id && ifs >> t_Name && ifs >> t_Pwd) {
                 if(t_Id == id && t_Name == name && t_Pwd == pwd) {
                     system("cls");
-                    cout << "teacher vertify success." << endl;
+                    
                     person = new Teacher(id, name, pwd);
                     // teacher menu
                     teacherMenu(person);
@@ -175,8 +173,6 @@ void loginIn(string fileName, int type) {
             string m_Pwd;
             while(ifs >> m_Name && ifs >> m_Pwd) {
                 if(m_Name == name && m_Pwd == pwd) {
-                    system("cls");
-                    cout << "manager vertify success." << endl;
                     person = new Manager(name, pwd);
                     // manager menu
                     managerMenu(person);
@@ -185,24 +181,27 @@ void loginIn(string fileName, int type) {
             }
         }
     
+        // if vertify failed, show error message and retry or back to main menu
         cout << "login failed, retry(y/Y) or back(else): ";
         char select = 'n';
         cin >> select;
         if(select == 'y' || select == 'Y') continue;
 
         ifs.close();
-        system("pause");
-        system("cls");
         return;
     }
 }
 
 int main()
 {
-    system("cls");
-    int select = 0;
+    int select = -1;
     while(true) {
+        // clear screen to ready
+        system("cls");
+        // show main menu to select identity
         mainopenMenu();
+        
+        // select identity(manager, student, teacher)
         cin>>select;
         switch (select) {
         case 1:
@@ -221,15 +220,15 @@ int main()
             // exit system
             cout << "exiting, see you next use!" << endl;
             system("pause");
-            system("cls");
             return 0;
         default:
             // input error
             cout << "input error, please input again." << endl;
+            cin.clear();        
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');    // clear cin buffer
             system("pause");
-            system("cls");
             break;
         }
     }
-    return 0;
+    return -1;
 }
