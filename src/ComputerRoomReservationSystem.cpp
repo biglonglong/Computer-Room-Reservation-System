@@ -1,6 +1,3 @@
-#include <iostream>
-#include <fstream>
-#include <string>
 #include "globalFile.h"
 #include "Identity.h"
 #include "Student.h"

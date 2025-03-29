@@ -1,11 +1,3 @@
-# C++ 从 0 到 1
-
-- [基础语法](.\C++从0到1\基础语法.md)
-- [面向对象](.\C++从0到1\面向对象.md)
-- [泛型编程](.\C++从0到1\泛型编程.md)
-- [STL](.\C++从0到1\STL.md)
-
-
 
 # Computer Room Reservation System
 
@@ -21,13 +13,15 @@
 - 教师：教师可以确认预约情况。
 - 管理员：管理员可以管理各种预约信息。
 
+
+
 ## 目录结构
 
 ```txt
 │   .gitignore
 │   CMakeLists.txt
 │   README.md
-│   
+│
 ├───data
 │       admin.txt
 │       computerRoom.txt
@@ -52,6 +46,7 @@
         Student.cpp
         Teacher.cpp
 ```
+
 
 
 ## 构建和运行
