@@ -45,10 +45,10 @@ void managerMenu(Identity* manager) {
             // logout
             delete manager;
             cout << "logout success." << endl;
-            system("pause");
-            return;
+            
         }
         system("pause");
+        return;
     }
 }
 
@@ -76,10 +76,9 @@ void studentMenu(Identity* student) {
             // logout
             delete student;
             cout << "logout success." << endl;
-            system("pause");
-            return;
         }
         system("pause");
+        return;
     }
 }
 
@@ -101,10 +100,9 @@ void teacherMenu(Identity* teacher) {
             // logout
             delete teacher;
             cout << "logout success." << endl;
-            system("pause");
-            return;
         }
         system("pause");
+        return;
     }
 }
 
